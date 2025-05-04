@@ -19,6 +19,14 @@ configurations {
     }
 }
 
+//sourceSets {
+//    main {
+//        resources {
+//            srcDir("src/main/resources")
+//        }
+//    }
+//}
+
 repositories {
     mavenCentral()
 }
@@ -33,6 +41,7 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web'
     // Database
     implementation 'org.liquibase:liquibase-core'
+
     runtimeOnly 'org.postgresql:postgresql'
     // Lombok
     compileOnly 'org.projectlombok:lombok'

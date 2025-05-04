@@ -1,4 +1,13 @@
 databaseChangeLog:
-  - includeAll:
-      path: db/changelog/v1
-      relativeToChangelogFile: true
+  - include:
+      file: db/changelog/v1/001-create-users-table.yaml
+  - include:
+      file: db/changelog/v1/002-create-courses-table.yaml
+  - include:
+      file: db/changelog/v1/003-create-lessons-table.yaml
+  - include:
+      file: db/changelog/v1/004-create-enrollments-table.yaml
+  - include:
+      file: db/changelog/v1/005-create-assignments-table.yaml
+  - include:
+      file: db/changelog/v1/006-create_reviews-table.yaml
