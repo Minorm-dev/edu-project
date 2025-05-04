@@ -1,0 +1,57 @@
+databaseChangeLog:
+  - changeSet:
+      id: 005-create-assignments-table
+      author: minorm
+      changes:
+        - createTable:
+            tableName: assignments
+            columns:
+              - column:
+                  name: id
+                  type: BIGINT
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: answer
+                  type: TEXT
+              - column:
+                  name: grade
+                  type: INT
+              - column:
+                  name: student_id
+                  type: BIGINT
+                  constraints:
+                    nullable: false
+                    references: users(id)
+                    foreignKeyName: fk_assignment_user
+              - column:
+                  name: lesson_id
+                  type: BIGINT
+                  constraints:
+                    nullable: false
+                    references: lessons
+                    foreignKeyName: fk_assignment_lesson
+              - column:
+                  name: created_at
+                  type: TIMESTAMP
+                  constraints:
+                    nullable: false
+              - column:
+                  name: updated_at
+                  type: TIMESTAMP
+
+        - addForeignKeyConstraint:
+            baseTableName: assignments
+            baseColumnNames: student_id
+            constraintName: fk_assignment_user
+            referencedTableName: users
+            referencedColumnNames: id
+
+        - addForeignKeyConstraint:
+            baseTableName: assignments
+            baseColumnNames: lesson_id
+            constraintName: fk_assignment_lesson
+            referencedTableName: lessons
+            referencedColumnNames: id

@@ -31,7 +31,7 @@ public class User extends BaseEntity {
     private String password;
 
     @Column(nullable = false)
-    private String image;
+    private String avatarPath;
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)

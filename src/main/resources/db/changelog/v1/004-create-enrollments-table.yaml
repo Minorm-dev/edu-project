@@ -1,0 +1,51 @@
+databaseChangeLog:
+  - changeSet:
+      id: 004-create-enrollments-table
+      author: minorm
+      changes:
+        - createTable:
+            tableName: enrollments
+            columns:
+              - column:
+                  name: id
+                  type: BIGINT
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+              - column:
+                  name: student_id
+                  type: BIGINT
+                  constraints:
+                    nullable: false
+                    referencedColumnNames: users(id)
+                    foreignKeyName: fk_enrollment_student
+              - column:
+                  name: course_id
+                  type: BIGINT
+                  constraints:
+                    nullable: false
+                    referencedColumnNames: courses(id)
+                    foreignKeyName: fk_enrollment_course
+              - column:
+                  name: created_at
+                  type: TIMESTAMP
+                  constraints:
+                    nullable: false
+              - column:
+                  name: updated_at
+                  type: TIMESTAMP
+
+        - addForeignKeyConstraint:
+            baseTableName: enrollments
+            baseColumnNames: student_id
+            constraintName: fk_enrollment_student
+            referencedTableName: users
+            referencedColumnNames: id
+
+        - addForeignKeyConstraint:
+            baseTableName: enrollments
+            baseColumnNames: course_id
+            constraintName: fk_enrollment_course
+            referencedTableName: courses
+            referencedColumnNames: id
