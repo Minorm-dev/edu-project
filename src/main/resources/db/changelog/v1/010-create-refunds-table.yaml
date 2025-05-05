@@ -7,6 +7,13 @@ databaseChangeLog:
             tableName: refunds
             columns:
               - column:
+                  name: id
+                  type: BIGINT
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+              - column:
                   name: purchase_id
                   type: BIGINT
                   constraints:
@@ -29,6 +36,16 @@ databaseChangeLog:
                   type: VARCHAR(20)
                   constraints:
                     nullable: false
+              - column:
+                  name: created_at
+                  type: TIMESTAMP
+                  constraints:
+                    nullable: false
+              - column:
+                  name: updated_at
+                  type: TIMESTAMP
+
+
         - addForeignKeyConstraint:
             baseTableName: refunds
             baseColumnNames: purchase_id
