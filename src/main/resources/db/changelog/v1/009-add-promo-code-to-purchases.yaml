@@ -1,0 +1,21 @@
+databaseChangeLog:
+  - changeSet:
+      id: 009-add-promo-code-to-purchases
+      author: minorm
+      changes:
+        - addColumn:
+            tableName: purchases
+            columns:
+              - column:
+                  name: promo_code_id
+                  type: BIGINT
+              - column:
+                  name: discount_applied
+                  type: NUMERIC(10, 2)
+        - addForeignKeyConstraint:
+            baseTableName: purchases
+            baseColumnNames: promo_code_id
+            constraintName: fk_purchase_promo_code
+            referencedTableName: promo_codes
+            referencedColumnNames: id
+            onDelete: SET NULL

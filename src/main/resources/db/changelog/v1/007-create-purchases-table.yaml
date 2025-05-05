@@ -1,0 +1,65 @@
+databaseChangeLog:
+  - changeSet:
+      id: 007-create-purchases-table
+      author: minorm
+      changes:
+        - createTable:
+            tableName: purchases
+            columns:
+              - column:
+                  name: id
+                  type: BIGINT
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+              - column:
+                  name: student_id
+                  type: BIGINT
+                  constraints:
+                    nullable: false
+              - column:
+                  name: course_id
+                  type: BIGINT
+                  constraints:
+                    nullable: false
+              - column:
+                  name: amount
+                  type: NUMERIC(10, 2)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: purchase_date
+                  type: TIMESTAMP
+                  constraints:
+                    nullable: false
+              - column:
+                  name: status
+                  type: VARCHAR(20)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: transaction_id
+                  type: VARCHAR(255)
+                  constraints:
+                    unique: true
+              - column:
+                  name: created_at
+                  type: TIMESTAMP
+                  constraints:
+                    nullable: false
+              - column:
+                  name: updated_at
+                  type: TIMESTAMP
+        - addForeignKeyConstraint:
+            baseTableName: purchases
+            baseColumnNames: student_id
+            constraintName: fk_purchase_student
+            referencedTableName: users
+            referencedColumnNames: id
+        - addForeignKeyConstraint:
+            baseTableName: purchases
+            baseColumnNames: course_id
+            constraintName: fk_purchase_course
+            referencedTableName: courses
+            referencedColumnNames: id

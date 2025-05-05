@@ -1,0 +1,45 @@
+databaseChangeLog:
+  - changeSet:
+      id: 010-create-refunds-table
+      author: minorm
+      changes:
+        - createTable:
+            tableName: refunds
+            columns:
+              - column:
+                  name: purchase_id
+                  type: BIGINT
+                  constraints:
+                    nullable: false
+              - column:
+                  name: amount
+                  type: NUMERIC(10, 2)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: refund_date
+                  type: TIMESTAMP
+                  constraints:
+                    nullable: false
+              - column:
+                  name: reason
+                  type: TEXT
+              - column:
+                  name: status
+                  type: VARCHAR(20)
+                  constraints:
+                    nullable: false
+        - addForeignKeyConstraint:
+            baseTableName: refunds
+            baseColumnNames: purchase_id
+            constraintName: fk_refund_purchase
+            referencedTableName: purchases
+            referencedColumnNames: id
+            onDelete: CASCADE
+
+        - createIndex:
+            indexName: idx_refund_status
+            tableName: refunds
+            columns:
+              - column:
+                  name: status

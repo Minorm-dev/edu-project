@@ -11,3 +11,11 @@ databaseChangeLog:
       file: db/changelog/v1/005-create-assignments-table.yaml
   - include:
       file: db/changelog/v1/006-create_reviews-table.yaml
+  - include:
+      file: db/changelog/v1/007-create-purchases-table.yaml
+  - include:
+      file: db/changelog/v1/008-create-promo-codes-table.yaml
+  - include:
+      file: db/changelog/v1/009-add-promo-code-to-purchases.yaml
+  - include:
+      file: db/changelog/v1/010-create-refunds-table.yaml

@@ -1,0 +1,47 @@
+databaseChangeLog:
+  - changeSet:
+      id: 008-create-promo-codes-table
+      author: minorm
+      changes:
+        - createTable:
+            tableName: promo_codes
+            columns:
+              - column:
+                  name: code
+                  type: VARCHAR(20)
+                  constraints:
+                    nullable: false
+                    unique: true
+              - column:
+                  name: discount_type
+                  type: VARCHAR(20)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: discount_value
+                  type: NUMERIC(10, 2)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: valid_from
+                  type: TIMESTAMP
+                  constraints:
+                    nullable: false
+              - column:
+                  name: valid_to
+                  type: TIMESTAMP
+                  constraints:
+                    nullable: false
+              - column:
+                  name: max_usages
+                  type: INT
+                  constraints:
+                    nullable: false
+        - createIndex:
+            indexName: idx_promo_code_validity
+            tableName: promo_codes
+            columns:
+              - column:
+                  name: valid_from
+              - column:
+                  name: valid_to
