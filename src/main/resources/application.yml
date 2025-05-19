@@ -8,7 +8,7 @@ spring:
     driver-class-name: org.postgresql.Driver
   jpa:
     hibernate:
-      ddl-auto: create
+      ddl-auto: validate
     properties:
       hibernate:
         dialect: org.hibernate.dialect.PostgreSQLDialect
@@ -16,4 +16,13 @@ spring:
         show_sql: true
   liquibase:
     change-log: classpath:/db/changelog/db.changelog-master.yaml
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+            client-id: 444618376803-t25mkqkbv7mcjacagj444eaua3hrgb7q.apps.googleusercontent.com
+            client-secret: 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
+            scope: email, profile
+            redirect-uri: http://localhost:8080/login/oauth2/code/google
 
