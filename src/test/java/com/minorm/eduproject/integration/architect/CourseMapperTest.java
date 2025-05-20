@@ -1,4 +1,4 @@
-package com.minorm.eduproject.architect;
+package com.minorm.eduproject.integration.architect;
 
 import com.minorm.eduproject.database.entity.Course;
 import com.minorm.eduproject.database.entity.CourseStatus;

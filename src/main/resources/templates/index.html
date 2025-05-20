@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+    <style>
+        body {
+            background-color: #e8f5e9;
+            font-family: Arial, sans-serif;
+            color: #2e7d32;
+        }
+
+        h1 {
+            color: #388e3c;
+        }
+
+        a {
+            color: #1b5e20;
+            text-decoration: none;
+            padding: 10px;
+            border: 2px solid #1b5e20;
+            border-radius: 5px;
+            display: inline-block;
+            margin-top: 20px;
+        }
+
+        a:hover {
+            background-color: #a5d6a7;
+        }
+    </style>
+</head>
+<body>
+    <h1>Spring Boot OAuth2</h1>
+    <p><a th:href="@{/oauth2/authorization/google}">Login with Google</a> </p>
+</body>
+</html>

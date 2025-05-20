@@ -1,23 +1,18 @@
 package com.minorm.eduproject.http.controller;
 
-import com.minorm.eduproject.service.impl.UserService;
-import lombok.RequiredArgsConstructor;
+import org.springframework.security.oauth2.client.authentication.OAuth2AuthenticationToken;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.RequestMapping;
 
-@RestController
-@RequiredArgsConstructor
+import java.util.Map;
+
+@Controller
+@RequestMapping("/api/users")
 public class UserController {
 
-    private final UserService userService;
-
-    @GetMapping("/")
-    public String home() {
-        return "Hello!";
-    }
-
-    @GetMapping("/registration")
-    public String registration() {
-        return userService.addUser();
+    @GetMapping("/info")
+    public Map<String, Object> userInfo(OAuth2AuthenticationToken authentication) {
+        return authentication.getPrincipal().getAttributes();
     }
 }

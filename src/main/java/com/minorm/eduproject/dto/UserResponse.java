@@ -14,4 +14,5 @@ public record UserResponse(
         Role role,
         Instant createdAt
 ) {
+
 }

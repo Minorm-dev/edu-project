@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard</title>
+    <style>
+        body{
+            background-color: #e8f5e9;
+            font-family: Arial, sans-serif;
+            color: #2e7d32;
+        }
+        h1 {
+            color: #388e3c;
+        }
+        p {
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>Welcome to Your Dashboard</h1>
+    <p>Username: <span th:text="${name}"></span></p>
+    <p>Email: <span th:text="${email}"></span></p>
+</body>
+</html>
